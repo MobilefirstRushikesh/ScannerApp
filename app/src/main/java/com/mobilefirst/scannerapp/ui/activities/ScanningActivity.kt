@@ -42,11 +42,9 @@ class ScanningActivity : AppCompatActivity() {
             .permissions( Manifest.permission.CAMERA)
             .request { allGranted, _, deniedList ->
                 if (allGranted) {
-                    Toast.makeText(this, "All permissions are granted", Toast.LENGTH_LONG).show()
-                    initCameraView()
+                   initCameraView()
 
                 } else {
-                    Toast.makeText(this, "These permissions are denied: $deniedList", Toast.LENGTH_LONG).show()
                     cameraPerms()
                 }
             }
@@ -80,12 +78,14 @@ class ScanningActivity : AppCompatActivity() {
                 }
                 catch (e : Exception){
                     Toast.makeText(this, "Something went wrong!", Toast.LENGTH_LONG).show()
+                    finish()
                 }
             } else {
-                Toast.makeText(this, "Something went wrong!", Toast.LENGTH_LONG).show()
+                finish()
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
+            finish()
         }
     }
 

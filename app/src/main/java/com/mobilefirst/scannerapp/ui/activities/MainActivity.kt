@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         scanBtn = findViewById(R.id.scanBtn)
         cropBtn = findViewById(R.id.cropBtn)
-viewModel.getAadhaarData()
         viewModel.savedData.observe(this) { aData ->
             if (aData.isNullOrEmpty()) {
 
@@ -43,6 +42,11 @@ viewModel.getAadhaarData()
             val intent = Intent(this, CroppingActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getAadhaarData()
     }
 
     private fun showDataList(aData: List<AadhaarData>) {

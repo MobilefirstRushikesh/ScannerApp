@@ -83,12 +83,10 @@ class CroppingActivity : AppCompatActivity() {
             .permissions( Manifest.permission.ACCESS_MEDIA_LOCATION)
             .request { allGranted, _, deniedList ->
                 if (allGranted) {
-                    Toast.makeText(this, "All permissions are granted", Toast.LENGTH_LONG).show()
                     picsContract.launch("image/*")
 
                 } else {
-                    Toast.makeText(this, "These permissions are denied: $deniedList", Toast.LENGTH_LONG).show()
-                   filePerms()
+                    filePerms()
                 }
             }
     }
@@ -107,6 +105,8 @@ class CroppingActivity : AppCompatActivity() {
             binding.imgv.setImageURI(croppedUri)
             imageUri = croppedUri.toString()
 
+        }else{
+           finish()
         }
     }
 

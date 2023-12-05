@@ -1,9 +1,10 @@
 package com.mobilefirst.scannerapp.model
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "aadhaar_db")
+@Entity(tableName = "aadhaar_db",indices = [Index(value = ["uid"], unique = true)])
 data class AadhaarData(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
